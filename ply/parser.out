@@ -1,0 +1,1526 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    POW
+    RESI
+    PLUSS
+    COMA
+    CARACTER
+    IF
+    ELSE
+    FOR
+    WHILE
+    DO
+    PRINT
+    CONST
+    INT
+    FLOATING
+
+Grammar
+
+Rule 0     S' -> bloque
+Rule 1     bloque -> declaracion
+Rule 2     bloque -> condicional
+Rule 3     bloque -> ciclo
+Rule 4     bloque -> imprimir
+Rule 5     bloque -> asignacion
+Rule 6     bloques -> bloque
+Rule 7     bloques -> bloques bloque
+Rule 8     declaracion -> TIPO VAR EQUAL expresion POINTCOMA
+Rule 9     declaracion -> TIPO VAR EQUAL CHAR POINTCOMA
+Rule 10    declaracion -> TIPO VAR EQUAL STRING POINTCOMA
+Rule 11    declaracion -> TIPO VAR EQUAL BOOL POINTCOMA
+Rule 12    declaracion -> TIPO VAR EQUAL VAR POINTCOMA
+Rule 13    declaracion -> TIPO VAR POINTCOMA
+Rule 14    asignacion -> VAR EQUAL expresion POINTCOMA
+Rule 15    asignacion -> VAR EQUAL CHAR POINTCOMA
+Rule 16    asignacion -> VAR EQUAL STRING POINTCOMA
+Rule 17    asignacion -> VAR EQUAL BOOL POINTCOMA
+Rule 18    asignacion -> VAR EQUAL VAR POINTCOMA
+Rule 19    expresion -> expresion SUM expresion
+Rule 20    expresion -> expresion REST expresion
+Rule 21    expresion -> expresion MULT expresion
+Rule 22    expresion -> expresion DIV expresion
+Rule 23    expresion -> factor
+Rule 24    factor -> NUMBER
+Rule 25    factor -> LPAREN expresion RPAREN
+Rule 26    factor -> FLOAT
+Rule 27    factor -> BOOL
+Rule 28    factor -> VAR
+Rule 29    condicional -> RESERV condiciones RLLAVE fin_con LLLAVE
+Rule 30    condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+Rule 31    fin_con -> bloques
+Rule 32    fin_con_else -> bloques LLLAVE
+Rule 33    condiciones -> logica
+Rule 34    condiciones -> LPAREN logica AND logica RPAREN
+Rule 35    condiciones -> LPAREN logica OR logica RPAREN
+Rule 36    logica -> LPAREN factor op_log factor RPAREN
+Rule 37    ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+Rule 38    op_log -> MAYOR
+Rule 39    op_log -> MENOR
+Rule 40    op_log -> MAEQUAL
+Rule 41    op_log -> MEEQUAL
+Rule 42    op_log -> DOBLEEQUAL
+Rule 43    op_log -> DIF
+Rule 44    imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA
+Rule 45    imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA
+Rule 46    imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA
+
+Terminals, with rules where they appear
+
+AND                  : 34
+BOOL                 : 11 17 27
+CARACTER             : 
+CHAR                 : 9 15 45
+COMA                 : 
+CONST                : 
+DIF                  : 43
+DIV                  : 22
+DO                   : 
+DOBLEEQUAL           : 42
+ELSE                 : 
+EQUAL                : 8 9 10 11 12 14 15 16 17 18
+FLOAT                : 26
+FLOATING             : 
+FOR                  : 
+IF                   : 
+INT                  : 
+LLLAVE               : 29 30 32 37
+LPAREN               : 25 34 35 36 44 45 46
+MAEQUAL              : 40
+MAYOR                : 38
+MEEQUAL              : 41
+MENOR                : 39
+MULT                 : 21
+NUMBER               : 24
+OR                   : 35
+PLUSS                : 
+POINTCOMA            : 8 9 10 11 12 13 14 15 16 17 18 37 44 45 46
+POW                  : 
+PRINT                : 
+RESERV               : 29 30 30 37 37 44 45 46
+RESI                 : 
+REST                 : 20
+RLLAVE               : 29 30 30 37
+RPAREN               : 25 34 35 36 44 45 46
+STRING               : 10 16 44
+SUM                  : 19
+TIPO                 : 8 9 10 11 12 13
+VAR                  : 8 9 10 11 12 12 13 14 15 16 17 18 18 28
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 5
+bloque               : 6 7 0
+bloques              : 7 31 32
+ciclo                : 3
+condicional          : 2
+condiciones          : 29 30 37
+declaracion          : 1
+expresion            : 8 14 19 19 20 20 21 21 22 22 25 46
+factor               : 23 36 36
+fin_con              : 29 30 37
+fin_con_else         : 30
+imprimir             : 4
+logica               : 33 34 34 35 35
+op_log               : 36
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . bloque
+    (1) bloque -> . declaracion
+    (2) bloque -> . condicional
+    (3) bloque -> . ciclo
+    (4) bloque -> . imprimir
+    (5) bloque -> . asignacion
+    (8) declaracion -> . TIPO VAR EQUAL expresion POINTCOMA
+    (9) declaracion -> . TIPO VAR EQUAL CHAR POINTCOMA
+    (10) declaracion -> . TIPO VAR EQUAL STRING POINTCOMA
+    (11) declaracion -> . TIPO VAR EQUAL BOOL POINTCOMA
+    (12) declaracion -> . TIPO VAR EQUAL VAR POINTCOMA
+    (13) declaracion -> . TIPO VAR POINTCOMA
+    (29) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE
+    (30) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+    (44) imprimir -> . RESERV LPAREN STRING RPAREN POINTCOMA
+    (45) imprimir -> . RESERV LPAREN CHAR RPAREN POINTCOMA
+    (46) imprimir -> . RESERV LPAREN expresion RPAREN POINTCOMA
+    (14) asignacion -> . VAR EQUAL expresion POINTCOMA
+    (15) asignacion -> . VAR EQUAL CHAR POINTCOMA
+    (16) asignacion -> . VAR EQUAL STRING POINTCOMA
+    (17) asignacion -> . VAR EQUAL BOOL POINTCOMA
+    (18) asignacion -> . VAR EQUAL VAR POINTCOMA
+
+    TIPO            shift and go to state 7
+    RESERV          shift and go to state 9
+    VAR             shift and go to state 8
+
+    bloque                         shift and go to state 1
+    declaracion                    shift and go to state 2
+    condicional                    shift and go to state 3
+    ciclo                          shift and go to state 4
+    imprimir                       shift and go to state 5
+    asignacion                     shift and go to state 6
+
+state 1
+
+    (0) S' -> bloque .
+
+
+
+state 2
+
+    (1) bloque -> declaracion .
+
+    $end            reduce using rule 1 (bloque -> declaracion .)
+    TIPO            reduce using rule 1 (bloque -> declaracion .)
+    RESERV          reduce using rule 1 (bloque -> declaracion .)
+    VAR             reduce using rule 1 (bloque -> declaracion .)
+    LLLAVE          reduce using rule 1 (bloque -> declaracion .)
+
+
+state 3
+
+    (2) bloque -> condicional .
+
+    $end            reduce using rule 2 (bloque -> condicional .)
+    TIPO            reduce using rule 2 (bloque -> condicional .)
+    RESERV          reduce using rule 2 (bloque -> condicional .)
+    VAR             reduce using rule 2 (bloque -> condicional .)
+    LLLAVE          reduce using rule 2 (bloque -> condicional .)
+
+
+state 4
+
+    (3) bloque -> ciclo .
+
+    $end            reduce using rule 3 (bloque -> ciclo .)
+    TIPO            reduce using rule 3 (bloque -> ciclo .)
+    RESERV          reduce using rule 3 (bloque -> ciclo .)
+    VAR             reduce using rule 3 (bloque -> ciclo .)
+    LLLAVE          reduce using rule 3 (bloque -> ciclo .)
+
+
+state 5
+
+    (4) bloque -> imprimir .
+
+    $end            reduce using rule 4 (bloque -> imprimir .)
+    TIPO            reduce using rule 4 (bloque -> imprimir .)
+    RESERV          reduce using rule 4 (bloque -> imprimir .)
+    VAR             reduce using rule 4 (bloque -> imprimir .)
+    LLLAVE          reduce using rule 4 (bloque -> imprimir .)
+
+
+state 6
+
+    (5) bloque -> asignacion .
+
+    $end            reduce using rule 5 (bloque -> asignacion .)
+    TIPO            reduce using rule 5 (bloque -> asignacion .)
+    RESERV          reduce using rule 5 (bloque -> asignacion .)
+    VAR             reduce using rule 5 (bloque -> asignacion .)
+    LLLAVE          reduce using rule 5 (bloque -> asignacion .)
+
+
+state 7
+
+    (8) declaracion -> TIPO . VAR EQUAL expresion POINTCOMA
+    (9) declaracion -> TIPO . VAR EQUAL CHAR POINTCOMA
+    (10) declaracion -> TIPO . VAR EQUAL STRING POINTCOMA
+    (11) declaracion -> TIPO . VAR EQUAL BOOL POINTCOMA
+    (12) declaracion -> TIPO . VAR EQUAL VAR POINTCOMA
+    (13) declaracion -> TIPO . VAR POINTCOMA
+
+    VAR             shift and go to state 10
+
+
+state 8
+
+    (14) asignacion -> VAR . EQUAL expresion POINTCOMA
+    (15) asignacion -> VAR . EQUAL CHAR POINTCOMA
+    (16) asignacion -> VAR . EQUAL STRING POINTCOMA
+    (17) asignacion -> VAR . EQUAL BOOL POINTCOMA
+    (18) asignacion -> VAR . EQUAL VAR POINTCOMA
+
+    EQUAL           shift and go to state 11
+
+
+state 9
+
+    (29) condicional -> RESERV . condiciones RLLAVE fin_con LLLAVE
+    (30) condicional -> RESERV . condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> RESERV . condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+    (44) imprimir -> RESERV . LPAREN STRING RPAREN POINTCOMA
+    (45) imprimir -> RESERV . LPAREN CHAR RPAREN POINTCOMA
+    (46) imprimir -> RESERV . LPAREN expresion RPAREN POINTCOMA
+    (33) condiciones -> . logica
+    (34) condiciones -> . LPAREN logica AND logica RPAREN
+    (35) condiciones -> . LPAREN logica OR logica RPAREN
+    (36) logica -> . LPAREN factor op_log factor RPAREN
+
+    LPAREN          shift and go to state 13
+
+    condiciones                    shift and go to state 12
+    logica                         shift and go to state 14
+
+state 10
+
+    (8) declaracion -> TIPO VAR . EQUAL expresion POINTCOMA
+    (9) declaracion -> TIPO VAR . EQUAL CHAR POINTCOMA
+    (10) declaracion -> TIPO VAR . EQUAL STRING POINTCOMA
+    (11) declaracion -> TIPO VAR . EQUAL BOOL POINTCOMA
+    (12) declaracion -> TIPO VAR . EQUAL VAR POINTCOMA
+    (13) declaracion -> TIPO VAR . POINTCOMA
+
+    EQUAL           shift and go to state 15
+    POINTCOMA       shift and go to state 16
+
+
+state 11
+
+    (14) asignacion -> VAR EQUAL . expresion POINTCOMA
+    (15) asignacion -> VAR EQUAL . CHAR POINTCOMA
+    (16) asignacion -> VAR EQUAL . STRING POINTCOMA
+    (17) asignacion -> VAR EQUAL . BOOL POINTCOMA
+    (18) asignacion -> VAR EQUAL . VAR POINTCOMA
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    CHAR            shift and go to state 19
+    STRING          shift and go to state 20
+    BOOL            shift and go to state 21
+    VAR             shift and go to state 17
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+
+    expresion                      shift and go to state 18
+    factor                         shift and go to state 22
+
+state 12
+
+    (29) condicional -> RESERV condiciones . RLLAVE fin_con LLLAVE
+    (30) condicional -> RESERV condiciones . RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> RESERV condiciones . RLLAVE fin_con LLLAVE RESERV POINTCOMA
+
+    RLLAVE          shift and go to state 26
+
+
+state 13
+
+    (44) imprimir -> RESERV LPAREN . STRING RPAREN POINTCOMA
+    (45) imprimir -> RESERV LPAREN . CHAR RPAREN POINTCOMA
+    (46) imprimir -> RESERV LPAREN . expresion RPAREN POINTCOMA
+    (34) condiciones -> LPAREN . logica AND logica RPAREN
+    (35) condiciones -> LPAREN . logica OR logica RPAREN
+    (36) logica -> LPAREN . factor op_log factor RPAREN
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (36) logica -> . LPAREN factor op_log factor RPAREN
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    STRING          shift and go to state 28
+    CHAR            shift and go to state 29
+    LPAREN          shift and go to state 27
+    NUMBER          shift and go to state 23
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    expresion                      shift and go to state 30
+    logica                         shift and go to state 31
+    factor                         shift and go to state 32
+
+state 14
+
+    (33) condiciones -> logica .
+
+    RLLAVE          reduce using rule 33 (condiciones -> logica .)
+
+
+state 15
+
+    (8) declaracion -> TIPO VAR EQUAL . expresion POINTCOMA
+    (9) declaracion -> TIPO VAR EQUAL . CHAR POINTCOMA
+    (10) declaracion -> TIPO VAR EQUAL . STRING POINTCOMA
+    (11) declaracion -> TIPO VAR EQUAL . BOOL POINTCOMA
+    (12) declaracion -> TIPO VAR EQUAL . VAR POINTCOMA
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    CHAR            shift and go to state 37
+    STRING          shift and go to state 38
+    BOOL            shift and go to state 39
+    VAR             shift and go to state 35
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+
+    expresion                      shift and go to state 36
+    factor                         shift and go to state 22
+
+state 16
+
+    (13) declaracion -> TIPO VAR POINTCOMA .
+
+    $end            reduce using rule 13 (declaracion -> TIPO VAR POINTCOMA .)
+    TIPO            reduce using rule 13 (declaracion -> TIPO VAR POINTCOMA .)
+    RESERV          reduce using rule 13 (declaracion -> TIPO VAR POINTCOMA .)
+    VAR             reduce using rule 13 (declaracion -> TIPO VAR POINTCOMA .)
+    LLLAVE          reduce using rule 13 (declaracion -> TIPO VAR POINTCOMA .)
+
+
+state 17
+
+    (18) asignacion -> VAR EQUAL VAR . POINTCOMA
+    (28) factor -> VAR .
+
+  ! shift/reduce conflict for POINTCOMA resolved as shift
+    POINTCOMA       shift and go to state 40
+    SUM             reduce using rule 28 (factor -> VAR .)
+    REST            reduce using rule 28 (factor -> VAR .)
+    MULT            reduce using rule 28 (factor -> VAR .)
+    DIV             reduce using rule 28 (factor -> VAR .)
+
+  ! POINTCOMA       [ reduce using rule 28 (factor -> VAR .) ]
+
+
+state 18
+
+    (14) asignacion -> VAR EQUAL expresion . POINTCOMA
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    POINTCOMA       shift and go to state 41
+    SUM             shift and go to state 42
+    REST            shift and go to state 43
+    MULT            shift and go to state 44
+    DIV             shift and go to state 45
+
+
+state 19
+
+    (15) asignacion -> VAR EQUAL CHAR . POINTCOMA
+
+    POINTCOMA       shift and go to state 46
+
+
+state 20
+
+    (16) asignacion -> VAR EQUAL STRING . POINTCOMA
+
+    POINTCOMA       shift and go to state 47
+
+
+state 21
+
+    (17) asignacion -> VAR EQUAL BOOL . POINTCOMA
+    (27) factor -> BOOL .
+
+  ! shift/reduce conflict for POINTCOMA resolved as shift
+    POINTCOMA       shift and go to state 48
+    SUM             reduce using rule 27 (factor -> BOOL .)
+    REST            reduce using rule 27 (factor -> BOOL .)
+    MULT            reduce using rule 27 (factor -> BOOL .)
+    DIV             reduce using rule 27 (factor -> BOOL .)
+
+  ! POINTCOMA       [ reduce using rule 27 (factor -> BOOL .) ]
+
+
+state 22
+
+    (23) expresion -> factor .
+
+    POINTCOMA       reduce using rule 23 (expresion -> factor .)
+    SUM             reduce using rule 23 (expresion -> factor .)
+    REST            reduce using rule 23 (expresion -> factor .)
+    MULT            reduce using rule 23 (expresion -> factor .)
+    DIV             reduce using rule 23 (expresion -> factor .)
+    RPAREN          reduce using rule 23 (expresion -> factor .)
+
+
+state 23
+
+    (24) factor -> NUMBER .
+
+    POINTCOMA       reduce using rule 24 (factor -> NUMBER .)
+    SUM             reduce using rule 24 (factor -> NUMBER .)
+    REST            reduce using rule 24 (factor -> NUMBER .)
+    MULT            reduce using rule 24 (factor -> NUMBER .)
+    DIV             reduce using rule 24 (factor -> NUMBER .)
+    MAYOR           reduce using rule 24 (factor -> NUMBER .)
+    MENOR           reduce using rule 24 (factor -> NUMBER .)
+    MAEQUAL         reduce using rule 24 (factor -> NUMBER .)
+    MEEQUAL         reduce using rule 24 (factor -> NUMBER .)
+    DOBLEEQUAL      reduce using rule 24 (factor -> NUMBER .)
+    DIF             reduce using rule 24 (factor -> NUMBER .)
+    RPAREN          reduce using rule 24 (factor -> NUMBER .)
+
+
+state 24
+
+    (25) factor -> LPAREN . expresion RPAREN
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    expresion                      shift and go to state 49
+    factor                         shift and go to state 22
+
+state 25
+
+    (26) factor -> FLOAT .
+
+    POINTCOMA       reduce using rule 26 (factor -> FLOAT .)
+    SUM             reduce using rule 26 (factor -> FLOAT .)
+    REST            reduce using rule 26 (factor -> FLOAT .)
+    MULT            reduce using rule 26 (factor -> FLOAT .)
+    DIV             reduce using rule 26 (factor -> FLOAT .)
+    MAYOR           reduce using rule 26 (factor -> FLOAT .)
+    MENOR           reduce using rule 26 (factor -> FLOAT .)
+    MAEQUAL         reduce using rule 26 (factor -> FLOAT .)
+    MEEQUAL         reduce using rule 26 (factor -> FLOAT .)
+    DOBLEEQUAL      reduce using rule 26 (factor -> FLOAT .)
+    DIF             reduce using rule 26 (factor -> FLOAT .)
+    RPAREN          reduce using rule 26 (factor -> FLOAT .)
+
+
+state 26
+
+    (29) condicional -> RESERV condiciones RLLAVE . fin_con LLLAVE
+    (30) condicional -> RESERV condiciones RLLAVE . fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> RESERV condiciones RLLAVE . fin_con LLLAVE RESERV POINTCOMA
+    (31) fin_con -> . bloques
+    (6) bloques -> . bloque
+    (7) bloques -> . bloques bloque
+    (1) bloque -> . declaracion
+    (2) bloque -> . condicional
+    (3) bloque -> . ciclo
+    (4) bloque -> . imprimir
+    (5) bloque -> . asignacion
+    (8) declaracion -> . TIPO VAR EQUAL expresion POINTCOMA
+    (9) declaracion -> . TIPO VAR EQUAL CHAR POINTCOMA
+    (10) declaracion -> . TIPO VAR EQUAL STRING POINTCOMA
+    (11) declaracion -> . TIPO VAR EQUAL BOOL POINTCOMA
+    (12) declaracion -> . TIPO VAR EQUAL VAR POINTCOMA
+    (13) declaracion -> . TIPO VAR POINTCOMA
+    (29) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE
+    (30) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+    (44) imprimir -> . RESERV LPAREN STRING RPAREN POINTCOMA
+    (45) imprimir -> . RESERV LPAREN CHAR RPAREN POINTCOMA
+    (46) imprimir -> . RESERV LPAREN expresion RPAREN POINTCOMA
+    (14) asignacion -> . VAR EQUAL expresion POINTCOMA
+    (15) asignacion -> . VAR EQUAL CHAR POINTCOMA
+    (16) asignacion -> . VAR EQUAL STRING POINTCOMA
+    (17) asignacion -> . VAR EQUAL BOOL POINTCOMA
+    (18) asignacion -> . VAR EQUAL VAR POINTCOMA
+
+    TIPO            shift and go to state 7
+    RESERV          shift and go to state 9
+    VAR             shift and go to state 8
+
+    fin_con                        shift and go to state 50
+    bloques                        shift and go to state 51
+    bloque                         shift and go to state 52
+    declaracion                    shift and go to state 2
+    condicional                    shift and go to state 3
+    ciclo                          shift and go to state 4
+    imprimir                       shift and go to state 5
+    asignacion                     shift and go to state 6
+
+state 27
+
+    (36) logica -> LPAREN . factor op_log factor RPAREN
+    (25) factor -> LPAREN . expresion RPAREN
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    factor                         shift and go to state 32
+    expresion                      shift and go to state 49
+
+state 28
+
+    (44) imprimir -> RESERV LPAREN STRING . RPAREN POINTCOMA
+
+    RPAREN          shift and go to state 53
+
+
+state 29
+
+    (45) imprimir -> RESERV LPAREN CHAR . RPAREN POINTCOMA
+
+    RPAREN          shift and go to state 54
+
+
+state 30
+
+    (46) imprimir -> RESERV LPAREN expresion . RPAREN POINTCOMA
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    RPAREN          shift and go to state 55
+    SUM             shift and go to state 42
+    REST            shift and go to state 43
+    MULT            shift and go to state 44
+    DIV             shift and go to state 45
+
+
+state 31
+
+    (34) condiciones -> LPAREN logica . AND logica RPAREN
+    (35) condiciones -> LPAREN logica . OR logica RPAREN
+
+    AND             shift and go to state 56
+    OR              shift and go to state 57
+
+
+state 32
+
+    (36) logica -> LPAREN factor . op_log factor RPAREN
+    (23) expresion -> factor .
+    (38) op_log -> . MAYOR
+    (39) op_log -> . MENOR
+    (40) op_log -> . MAEQUAL
+    (41) op_log -> . MEEQUAL
+    (42) op_log -> . DOBLEEQUAL
+    (43) op_log -> . DIF
+
+    RPAREN          reduce using rule 23 (expresion -> factor .)
+    SUM             reduce using rule 23 (expresion -> factor .)
+    REST            reduce using rule 23 (expresion -> factor .)
+    MULT            reduce using rule 23 (expresion -> factor .)
+    DIV             reduce using rule 23 (expresion -> factor .)
+    MAYOR           shift and go to state 59
+    MENOR           shift and go to state 60
+    MAEQUAL         shift and go to state 61
+    MEEQUAL         shift and go to state 62
+    DOBLEEQUAL      shift and go to state 63
+    DIF             shift and go to state 64
+
+    op_log                         shift and go to state 58
+
+state 33
+
+    (27) factor -> BOOL .
+
+    MAYOR           reduce using rule 27 (factor -> BOOL .)
+    MENOR           reduce using rule 27 (factor -> BOOL .)
+    MAEQUAL         reduce using rule 27 (factor -> BOOL .)
+    MEEQUAL         reduce using rule 27 (factor -> BOOL .)
+    DOBLEEQUAL      reduce using rule 27 (factor -> BOOL .)
+    DIF             reduce using rule 27 (factor -> BOOL .)
+    RPAREN          reduce using rule 27 (factor -> BOOL .)
+    SUM             reduce using rule 27 (factor -> BOOL .)
+    REST            reduce using rule 27 (factor -> BOOL .)
+    MULT            reduce using rule 27 (factor -> BOOL .)
+    DIV             reduce using rule 27 (factor -> BOOL .)
+    POINTCOMA       reduce using rule 27 (factor -> BOOL .)
+
+
+state 34
+
+    (28) factor -> VAR .
+
+    MAYOR           reduce using rule 28 (factor -> VAR .)
+    MENOR           reduce using rule 28 (factor -> VAR .)
+    MAEQUAL         reduce using rule 28 (factor -> VAR .)
+    MEEQUAL         reduce using rule 28 (factor -> VAR .)
+    DOBLEEQUAL      reduce using rule 28 (factor -> VAR .)
+    DIF             reduce using rule 28 (factor -> VAR .)
+    RPAREN          reduce using rule 28 (factor -> VAR .)
+    SUM             reduce using rule 28 (factor -> VAR .)
+    REST            reduce using rule 28 (factor -> VAR .)
+    MULT            reduce using rule 28 (factor -> VAR .)
+    DIV             reduce using rule 28 (factor -> VAR .)
+    POINTCOMA       reduce using rule 28 (factor -> VAR .)
+
+
+state 35
+
+    (12) declaracion -> TIPO VAR EQUAL VAR . POINTCOMA
+    (28) factor -> VAR .
+
+  ! shift/reduce conflict for POINTCOMA resolved as shift
+    POINTCOMA       shift and go to state 65
+    SUM             reduce using rule 28 (factor -> VAR .)
+    REST            reduce using rule 28 (factor -> VAR .)
+    MULT            reduce using rule 28 (factor -> VAR .)
+    DIV             reduce using rule 28 (factor -> VAR .)
+
+  ! POINTCOMA       [ reduce using rule 28 (factor -> VAR .) ]
+
+
+state 36
+
+    (8) declaracion -> TIPO VAR EQUAL expresion . POINTCOMA
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    POINTCOMA       shift and go to state 66
+    SUM             shift and go to state 42
+    REST            shift and go to state 43
+    MULT            shift and go to state 44
+    DIV             shift and go to state 45
+
+
+state 37
+
+    (9) declaracion -> TIPO VAR EQUAL CHAR . POINTCOMA
+
+    POINTCOMA       shift and go to state 67
+
+
+state 38
+
+    (10) declaracion -> TIPO VAR EQUAL STRING . POINTCOMA
+
+    POINTCOMA       shift and go to state 68
+
+
+state 39
+
+    (11) declaracion -> TIPO VAR EQUAL BOOL . POINTCOMA
+    (27) factor -> BOOL .
+
+  ! shift/reduce conflict for POINTCOMA resolved as shift
+    POINTCOMA       shift and go to state 69
+    SUM             reduce using rule 27 (factor -> BOOL .)
+    REST            reduce using rule 27 (factor -> BOOL .)
+    MULT            reduce using rule 27 (factor -> BOOL .)
+    DIV             reduce using rule 27 (factor -> BOOL .)
+
+  ! POINTCOMA       [ reduce using rule 27 (factor -> BOOL .) ]
+
+
+state 40
+
+    (18) asignacion -> VAR EQUAL VAR POINTCOMA .
+
+    $end            reduce using rule 18 (asignacion -> VAR EQUAL VAR POINTCOMA .)
+    TIPO            reduce using rule 18 (asignacion -> VAR EQUAL VAR POINTCOMA .)
+    RESERV          reduce using rule 18 (asignacion -> VAR EQUAL VAR POINTCOMA .)
+    VAR             reduce using rule 18 (asignacion -> VAR EQUAL VAR POINTCOMA .)
+    LLLAVE          reduce using rule 18 (asignacion -> VAR EQUAL VAR POINTCOMA .)
+
+
+state 41
+
+    (14) asignacion -> VAR EQUAL expresion POINTCOMA .
+
+    $end            reduce using rule 14 (asignacion -> VAR EQUAL expresion POINTCOMA .)
+    TIPO            reduce using rule 14 (asignacion -> VAR EQUAL expresion POINTCOMA .)
+    RESERV          reduce using rule 14 (asignacion -> VAR EQUAL expresion POINTCOMA .)
+    VAR             reduce using rule 14 (asignacion -> VAR EQUAL expresion POINTCOMA .)
+    LLLAVE          reduce using rule 14 (asignacion -> VAR EQUAL expresion POINTCOMA .)
+
+
+state 42
+
+    (19) expresion -> expresion SUM . expresion
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    expresion                      shift and go to state 70
+    factor                         shift and go to state 22
+
+state 43
+
+    (20) expresion -> expresion REST . expresion
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    expresion                      shift and go to state 71
+    factor                         shift and go to state 22
+
+state 44
+
+    (21) expresion -> expresion MULT . expresion
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    expresion                      shift and go to state 72
+    factor                         shift and go to state 22
+
+state 45
+
+    (22) expresion -> expresion DIV . expresion
+    (19) expresion -> . expresion SUM expresion
+    (20) expresion -> . expresion REST expresion
+    (21) expresion -> . expresion MULT expresion
+    (22) expresion -> . expresion DIV expresion
+    (23) expresion -> . factor
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    expresion                      shift and go to state 73
+    factor                         shift and go to state 22
+
+state 46
+
+    (15) asignacion -> VAR EQUAL CHAR POINTCOMA .
+
+    $end            reduce using rule 15 (asignacion -> VAR EQUAL CHAR POINTCOMA .)
+    TIPO            reduce using rule 15 (asignacion -> VAR EQUAL CHAR POINTCOMA .)
+    RESERV          reduce using rule 15 (asignacion -> VAR EQUAL CHAR POINTCOMA .)
+    VAR             reduce using rule 15 (asignacion -> VAR EQUAL CHAR POINTCOMA .)
+    LLLAVE          reduce using rule 15 (asignacion -> VAR EQUAL CHAR POINTCOMA .)
+
+
+state 47
+
+    (16) asignacion -> VAR EQUAL STRING POINTCOMA .
+
+    $end            reduce using rule 16 (asignacion -> VAR EQUAL STRING POINTCOMA .)
+    TIPO            reduce using rule 16 (asignacion -> VAR EQUAL STRING POINTCOMA .)
+    RESERV          reduce using rule 16 (asignacion -> VAR EQUAL STRING POINTCOMA .)
+    VAR             reduce using rule 16 (asignacion -> VAR EQUAL STRING POINTCOMA .)
+    LLLAVE          reduce using rule 16 (asignacion -> VAR EQUAL STRING POINTCOMA .)
+
+
+state 48
+
+    (17) asignacion -> VAR EQUAL BOOL POINTCOMA .
+
+    $end            reduce using rule 17 (asignacion -> VAR EQUAL BOOL POINTCOMA .)
+    TIPO            reduce using rule 17 (asignacion -> VAR EQUAL BOOL POINTCOMA .)
+    RESERV          reduce using rule 17 (asignacion -> VAR EQUAL BOOL POINTCOMA .)
+    VAR             reduce using rule 17 (asignacion -> VAR EQUAL BOOL POINTCOMA .)
+    LLLAVE          reduce using rule 17 (asignacion -> VAR EQUAL BOOL POINTCOMA .)
+
+
+state 49
+
+    (25) factor -> LPAREN expresion . RPAREN
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    RPAREN          shift and go to state 74
+    SUM             shift and go to state 42
+    REST            shift and go to state 43
+    MULT            shift and go to state 44
+    DIV             shift and go to state 45
+
+
+state 50
+
+    (29) condicional -> RESERV condiciones RLLAVE fin_con . LLLAVE
+    (30) condicional -> RESERV condiciones RLLAVE fin_con . LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> RESERV condiciones RLLAVE fin_con . LLLAVE RESERV POINTCOMA
+
+    LLLAVE          shift and go to state 75
+
+
+state 51
+
+    (31) fin_con -> bloques .
+    (7) bloques -> bloques . bloque
+    (1) bloque -> . declaracion
+    (2) bloque -> . condicional
+    (3) bloque -> . ciclo
+    (4) bloque -> . imprimir
+    (5) bloque -> . asignacion
+    (8) declaracion -> . TIPO VAR EQUAL expresion POINTCOMA
+    (9) declaracion -> . TIPO VAR EQUAL CHAR POINTCOMA
+    (10) declaracion -> . TIPO VAR EQUAL STRING POINTCOMA
+    (11) declaracion -> . TIPO VAR EQUAL BOOL POINTCOMA
+    (12) declaracion -> . TIPO VAR EQUAL VAR POINTCOMA
+    (13) declaracion -> . TIPO VAR POINTCOMA
+    (29) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE
+    (30) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+    (44) imprimir -> . RESERV LPAREN STRING RPAREN POINTCOMA
+    (45) imprimir -> . RESERV LPAREN CHAR RPAREN POINTCOMA
+    (46) imprimir -> . RESERV LPAREN expresion RPAREN POINTCOMA
+    (14) asignacion -> . VAR EQUAL expresion POINTCOMA
+    (15) asignacion -> . VAR EQUAL CHAR POINTCOMA
+    (16) asignacion -> . VAR EQUAL STRING POINTCOMA
+    (17) asignacion -> . VAR EQUAL BOOL POINTCOMA
+    (18) asignacion -> . VAR EQUAL VAR POINTCOMA
+
+    LLLAVE          reduce using rule 31 (fin_con -> bloques .)
+    TIPO            shift and go to state 7
+    RESERV          shift and go to state 9
+    VAR             shift and go to state 8
+
+    bloque                         shift and go to state 76
+    declaracion                    shift and go to state 2
+    condicional                    shift and go to state 3
+    ciclo                          shift and go to state 4
+    imprimir                       shift and go to state 5
+    asignacion                     shift and go to state 6
+
+state 52
+
+    (6) bloques -> bloque .
+
+    TIPO            reduce using rule 6 (bloques -> bloque .)
+    RESERV          reduce using rule 6 (bloques -> bloque .)
+    VAR             reduce using rule 6 (bloques -> bloque .)
+    LLLAVE          reduce using rule 6 (bloques -> bloque .)
+
+
+state 53
+
+    (44) imprimir -> RESERV LPAREN STRING RPAREN . POINTCOMA
+
+    POINTCOMA       shift and go to state 77
+
+
+state 54
+
+    (45) imprimir -> RESERV LPAREN CHAR RPAREN . POINTCOMA
+
+    POINTCOMA       shift and go to state 78
+
+
+state 55
+
+    (46) imprimir -> RESERV LPAREN expresion RPAREN . POINTCOMA
+
+    POINTCOMA       shift and go to state 79
+
+
+state 56
+
+    (34) condiciones -> LPAREN logica AND . logica RPAREN
+    (36) logica -> . LPAREN factor op_log factor RPAREN
+
+    LPAREN          shift and go to state 80
+
+    logica                         shift and go to state 81
+
+state 57
+
+    (35) condiciones -> LPAREN logica OR . logica RPAREN
+    (36) logica -> . LPAREN factor op_log factor RPAREN
+
+    LPAREN          shift and go to state 80
+
+    logica                         shift and go to state 82
+
+state 58
+
+    (36) logica -> LPAREN factor op_log . factor RPAREN
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    factor                         shift and go to state 83
+
+state 59
+
+    (38) op_log -> MAYOR .
+
+    NUMBER          reduce using rule 38 (op_log -> MAYOR .)
+    LPAREN          reduce using rule 38 (op_log -> MAYOR .)
+    FLOAT           reduce using rule 38 (op_log -> MAYOR .)
+    BOOL            reduce using rule 38 (op_log -> MAYOR .)
+    VAR             reduce using rule 38 (op_log -> MAYOR .)
+
+
+state 60
+
+    (39) op_log -> MENOR .
+
+    NUMBER          reduce using rule 39 (op_log -> MENOR .)
+    LPAREN          reduce using rule 39 (op_log -> MENOR .)
+    FLOAT           reduce using rule 39 (op_log -> MENOR .)
+    BOOL            reduce using rule 39 (op_log -> MENOR .)
+    VAR             reduce using rule 39 (op_log -> MENOR .)
+
+
+state 61
+
+    (40) op_log -> MAEQUAL .
+
+    NUMBER          reduce using rule 40 (op_log -> MAEQUAL .)
+    LPAREN          reduce using rule 40 (op_log -> MAEQUAL .)
+    FLOAT           reduce using rule 40 (op_log -> MAEQUAL .)
+    BOOL            reduce using rule 40 (op_log -> MAEQUAL .)
+    VAR             reduce using rule 40 (op_log -> MAEQUAL .)
+
+
+state 62
+
+    (41) op_log -> MEEQUAL .
+
+    NUMBER          reduce using rule 41 (op_log -> MEEQUAL .)
+    LPAREN          reduce using rule 41 (op_log -> MEEQUAL .)
+    FLOAT           reduce using rule 41 (op_log -> MEEQUAL .)
+    BOOL            reduce using rule 41 (op_log -> MEEQUAL .)
+    VAR             reduce using rule 41 (op_log -> MEEQUAL .)
+
+
+state 63
+
+    (42) op_log -> DOBLEEQUAL .
+
+    NUMBER          reduce using rule 42 (op_log -> DOBLEEQUAL .)
+    LPAREN          reduce using rule 42 (op_log -> DOBLEEQUAL .)
+    FLOAT           reduce using rule 42 (op_log -> DOBLEEQUAL .)
+    BOOL            reduce using rule 42 (op_log -> DOBLEEQUAL .)
+    VAR             reduce using rule 42 (op_log -> DOBLEEQUAL .)
+
+
+state 64
+
+    (43) op_log -> DIF .
+
+    NUMBER          reduce using rule 43 (op_log -> DIF .)
+    LPAREN          reduce using rule 43 (op_log -> DIF .)
+    FLOAT           reduce using rule 43 (op_log -> DIF .)
+    BOOL            reduce using rule 43 (op_log -> DIF .)
+    VAR             reduce using rule 43 (op_log -> DIF .)
+
+
+state 65
+
+    (12) declaracion -> TIPO VAR EQUAL VAR POINTCOMA .
+
+    $end            reduce using rule 12 (declaracion -> TIPO VAR EQUAL VAR POINTCOMA .)
+    TIPO            reduce using rule 12 (declaracion -> TIPO VAR EQUAL VAR POINTCOMA .)
+    RESERV          reduce using rule 12 (declaracion -> TIPO VAR EQUAL VAR POINTCOMA .)
+    VAR             reduce using rule 12 (declaracion -> TIPO VAR EQUAL VAR POINTCOMA .)
+    LLLAVE          reduce using rule 12 (declaracion -> TIPO VAR EQUAL VAR POINTCOMA .)
+
+
+state 66
+
+    (8) declaracion -> TIPO VAR EQUAL expresion POINTCOMA .
+
+    $end            reduce using rule 8 (declaracion -> TIPO VAR EQUAL expresion POINTCOMA .)
+    TIPO            reduce using rule 8 (declaracion -> TIPO VAR EQUAL expresion POINTCOMA .)
+    RESERV          reduce using rule 8 (declaracion -> TIPO VAR EQUAL expresion POINTCOMA .)
+    VAR             reduce using rule 8 (declaracion -> TIPO VAR EQUAL expresion POINTCOMA .)
+    LLLAVE          reduce using rule 8 (declaracion -> TIPO VAR EQUAL expresion POINTCOMA .)
+
+
+state 67
+
+    (9) declaracion -> TIPO VAR EQUAL CHAR POINTCOMA .
+
+    $end            reduce using rule 9 (declaracion -> TIPO VAR EQUAL CHAR POINTCOMA .)
+    TIPO            reduce using rule 9 (declaracion -> TIPO VAR EQUAL CHAR POINTCOMA .)
+    RESERV          reduce using rule 9 (declaracion -> TIPO VAR EQUAL CHAR POINTCOMA .)
+    VAR             reduce using rule 9 (declaracion -> TIPO VAR EQUAL CHAR POINTCOMA .)
+    LLLAVE          reduce using rule 9 (declaracion -> TIPO VAR EQUAL CHAR POINTCOMA .)
+
+
+state 68
+
+    (10) declaracion -> TIPO VAR EQUAL STRING POINTCOMA .
+
+    $end            reduce using rule 10 (declaracion -> TIPO VAR EQUAL STRING POINTCOMA .)
+    TIPO            reduce using rule 10 (declaracion -> TIPO VAR EQUAL STRING POINTCOMA .)
+    RESERV          reduce using rule 10 (declaracion -> TIPO VAR EQUAL STRING POINTCOMA .)
+    VAR             reduce using rule 10 (declaracion -> TIPO VAR EQUAL STRING POINTCOMA .)
+    LLLAVE          reduce using rule 10 (declaracion -> TIPO VAR EQUAL STRING POINTCOMA .)
+
+
+state 69
+
+    (11) declaracion -> TIPO VAR EQUAL BOOL POINTCOMA .
+
+    $end            reduce using rule 11 (declaracion -> TIPO VAR EQUAL BOOL POINTCOMA .)
+    TIPO            reduce using rule 11 (declaracion -> TIPO VAR EQUAL BOOL POINTCOMA .)
+    RESERV          reduce using rule 11 (declaracion -> TIPO VAR EQUAL BOOL POINTCOMA .)
+    VAR             reduce using rule 11 (declaracion -> TIPO VAR EQUAL BOOL POINTCOMA .)
+    LLLAVE          reduce using rule 11 (declaracion -> TIPO VAR EQUAL BOOL POINTCOMA .)
+
+
+state 70
+
+    (19) expresion -> expresion SUM expresion .
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    POINTCOMA       reduce using rule 19 (expresion -> expresion SUM expresion .)
+    SUM             reduce using rule 19 (expresion -> expresion SUM expresion .)
+    REST            reduce using rule 19 (expresion -> expresion SUM expresion .)
+    RPAREN          reduce using rule 19 (expresion -> expresion SUM expresion .)
+    MULT            shift and go to state 44
+    DIV             shift and go to state 45
+
+  ! MULT            [ reduce using rule 19 (expresion -> expresion SUM expresion .) ]
+  ! DIV             [ reduce using rule 19 (expresion -> expresion SUM expresion .) ]
+  ! SUM             [ shift and go to state 42 ]
+  ! REST            [ shift and go to state 43 ]
+
+
+state 71
+
+    (20) expresion -> expresion REST expresion .
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    POINTCOMA       reduce using rule 20 (expresion -> expresion REST expresion .)
+    SUM             reduce using rule 20 (expresion -> expresion REST expresion .)
+    REST            reduce using rule 20 (expresion -> expresion REST expresion .)
+    RPAREN          reduce using rule 20 (expresion -> expresion REST expresion .)
+    MULT            shift and go to state 44
+    DIV             shift and go to state 45
+
+  ! MULT            [ reduce using rule 20 (expresion -> expresion REST expresion .) ]
+  ! DIV             [ reduce using rule 20 (expresion -> expresion REST expresion .) ]
+  ! SUM             [ shift and go to state 42 ]
+  ! REST            [ shift and go to state 43 ]
+
+
+state 72
+
+    (21) expresion -> expresion MULT expresion .
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    POINTCOMA       reduce using rule 21 (expresion -> expresion MULT expresion .)
+    SUM             reduce using rule 21 (expresion -> expresion MULT expresion .)
+    REST            reduce using rule 21 (expresion -> expresion MULT expresion .)
+    MULT            reduce using rule 21 (expresion -> expresion MULT expresion .)
+    DIV             reduce using rule 21 (expresion -> expresion MULT expresion .)
+    RPAREN          reduce using rule 21 (expresion -> expresion MULT expresion .)
+
+  ! SUM             [ shift and go to state 42 ]
+  ! REST            [ shift and go to state 43 ]
+  ! MULT            [ shift and go to state 44 ]
+  ! DIV             [ shift and go to state 45 ]
+
+
+state 73
+
+    (22) expresion -> expresion DIV expresion .
+    (19) expresion -> expresion . SUM expresion
+    (20) expresion -> expresion . REST expresion
+    (21) expresion -> expresion . MULT expresion
+    (22) expresion -> expresion . DIV expresion
+
+    POINTCOMA       reduce using rule 22 (expresion -> expresion DIV expresion .)
+    SUM             reduce using rule 22 (expresion -> expresion DIV expresion .)
+    REST            reduce using rule 22 (expresion -> expresion DIV expresion .)
+    MULT            reduce using rule 22 (expresion -> expresion DIV expresion .)
+    DIV             reduce using rule 22 (expresion -> expresion DIV expresion .)
+    RPAREN          reduce using rule 22 (expresion -> expresion DIV expresion .)
+
+  ! SUM             [ shift and go to state 42 ]
+  ! REST            [ shift and go to state 43 ]
+  ! MULT            [ shift and go to state 44 ]
+  ! DIV             [ shift and go to state 45 ]
+
+
+state 74
+
+    (25) factor -> LPAREN expresion RPAREN .
+
+    POINTCOMA       reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    SUM             reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    REST            reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    MULT            reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    DIV             reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    MAYOR           reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    MENOR           reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    MAEQUAL         reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    MEEQUAL         reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    DOBLEEQUAL      reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    DIF             reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+    RPAREN          reduce using rule 25 (factor -> LPAREN expresion RPAREN .)
+
+
+state 75
+
+    (29) condicional -> RESERV condiciones RLLAVE fin_con LLLAVE .
+    (30) condicional -> RESERV condiciones RLLAVE fin_con LLLAVE . RESERV RLLAVE fin_con_else
+    (37) ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE . RESERV POINTCOMA
+
+  ! shift/reduce conflict for RESERV resolved as shift
+    $end            reduce using rule 29 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE .)
+    TIPO            reduce using rule 29 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE .)
+    VAR             reduce using rule 29 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE .)
+    LLLAVE          reduce using rule 29 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE .)
+    RESERV          shift and go to state 84
+
+  ! RESERV          [ reduce using rule 29 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE .) ]
+
+
+state 76
+
+    (7) bloques -> bloques bloque .
+
+    TIPO            reduce using rule 7 (bloques -> bloques bloque .)
+    RESERV          reduce using rule 7 (bloques -> bloques bloque .)
+    VAR             reduce using rule 7 (bloques -> bloques bloque .)
+    LLLAVE          reduce using rule 7 (bloques -> bloques bloque .)
+
+
+state 77
+
+    (44) imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA .
+
+    $end            reduce using rule 44 (imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA .)
+    TIPO            reduce using rule 44 (imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA .)
+    RESERV          reduce using rule 44 (imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA .)
+    VAR             reduce using rule 44 (imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA .)
+    LLLAVE          reduce using rule 44 (imprimir -> RESERV LPAREN STRING RPAREN POINTCOMA .)
+
+
+state 78
+
+    (45) imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA .
+
+    $end            reduce using rule 45 (imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA .)
+    TIPO            reduce using rule 45 (imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA .)
+    RESERV          reduce using rule 45 (imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA .)
+    VAR             reduce using rule 45 (imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA .)
+    LLLAVE          reduce using rule 45 (imprimir -> RESERV LPAREN CHAR RPAREN POINTCOMA .)
+
+
+state 79
+
+    (46) imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA .
+
+    $end            reduce using rule 46 (imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA .)
+    TIPO            reduce using rule 46 (imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA .)
+    RESERV          reduce using rule 46 (imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA .)
+    VAR             reduce using rule 46 (imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA .)
+    LLLAVE          reduce using rule 46 (imprimir -> RESERV LPAREN expresion RPAREN POINTCOMA .)
+
+
+state 80
+
+    (36) logica -> LPAREN . factor op_log factor RPAREN
+    (24) factor -> . NUMBER
+    (25) factor -> . LPAREN expresion RPAREN
+    (26) factor -> . FLOAT
+    (27) factor -> . BOOL
+    (28) factor -> . VAR
+
+    NUMBER          shift and go to state 23
+    LPAREN          shift and go to state 24
+    FLOAT           shift and go to state 25
+    BOOL            shift and go to state 33
+    VAR             shift and go to state 34
+
+    factor                         shift and go to state 85
+
+state 81
+
+    (34) condiciones -> LPAREN logica AND logica . RPAREN
+
+    RPAREN          shift and go to state 86
+
+
+state 82
+
+    (35) condiciones -> LPAREN logica OR logica . RPAREN
+
+    RPAREN          shift and go to state 87
+
+
+state 83
+
+    (36) logica -> LPAREN factor op_log factor . RPAREN
+
+    RPAREN          shift and go to state 88
+
+
+state 84
+
+    (30) condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV . RLLAVE fin_con_else
+    (37) ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV . POINTCOMA
+
+    RLLAVE          shift and go to state 89
+    POINTCOMA       shift and go to state 90
+
+
+state 85
+
+    (36) logica -> LPAREN factor . op_log factor RPAREN
+    (38) op_log -> . MAYOR
+    (39) op_log -> . MENOR
+    (40) op_log -> . MAEQUAL
+    (41) op_log -> . MEEQUAL
+    (42) op_log -> . DOBLEEQUAL
+    (43) op_log -> . DIF
+
+    MAYOR           shift and go to state 59
+    MENOR           shift and go to state 60
+    MAEQUAL         shift and go to state 61
+    MEEQUAL         shift and go to state 62
+    DOBLEEQUAL      shift and go to state 63
+    DIF             shift and go to state 64
+
+    op_log                         shift and go to state 58
+
+state 86
+
+    (34) condiciones -> LPAREN logica AND logica RPAREN .
+
+    RLLAVE          reduce using rule 34 (condiciones -> LPAREN logica AND logica RPAREN .)
+
+
+state 87
+
+    (35) condiciones -> LPAREN logica OR logica RPAREN .
+
+    RLLAVE          reduce using rule 35 (condiciones -> LPAREN logica OR logica RPAREN .)
+
+
+state 88
+
+    (36) logica -> LPAREN factor op_log factor RPAREN .
+
+    RLLAVE          reduce using rule 36 (logica -> LPAREN factor op_log factor RPAREN .)
+    AND             reduce using rule 36 (logica -> LPAREN factor op_log factor RPAREN .)
+    OR              reduce using rule 36 (logica -> LPAREN factor op_log factor RPAREN .)
+    RPAREN          reduce using rule 36 (logica -> LPAREN factor op_log factor RPAREN .)
+
+
+state 89
+
+    (30) condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE . fin_con_else
+    (32) fin_con_else -> . bloques LLLAVE
+    (6) bloques -> . bloque
+    (7) bloques -> . bloques bloque
+    (1) bloque -> . declaracion
+    (2) bloque -> . condicional
+    (3) bloque -> . ciclo
+    (4) bloque -> . imprimir
+    (5) bloque -> . asignacion
+    (8) declaracion -> . TIPO VAR EQUAL expresion POINTCOMA
+    (9) declaracion -> . TIPO VAR EQUAL CHAR POINTCOMA
+    (10) declaracion -> . TIPO VAR EQUAL STRING POINTCOMA
+    (11) declaracion -> . TIPO VAR EQUAL BOOL POINTCOMA
+    (12) declaracion -> . TIPO VAR EQUAL VAR POINTCOMA
+    (13) declaracion -> . TIPO VAR POINTCOMA
+    (29) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE
+    (30) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+    (44) imprimir -> . RESERV LPAREN STRING RPAREN POINTCOMA
+    (45) imprimir -> . RESERV LPAREN CHAR RPAREN POINTCOMA
+    (46) imprimir -> . RESERV LPAREN expresion RPAREN POINTCOMA
+    (14) asignacion -> . VAR EQUAL expresion POINTCOMA
+    (15) asignacion -> . VAR EQUAL CHAR POINTCOMA
+    (16) asignacion -> . VAR EQUAL STRING POINTCOMA
+    (17) asignacion -> . VAR EQUAL BOOL POINTCOMA
+    (18) asignacion -> . VAR EQUAL VAR POINTCOMA
+
+    TIPO            shift and go to state 7
+    RESERV          shift and go to state 9
+    VAR             shift and go to state 8
+
+    fin_con_else                   shift and go to state 91
+    bloques                        shift and go to state 92
+    bloque                         shift and go to state 52
+    declaracion                    shift and go to state 2
+    condicional                    shift and go to state 3
+    ciclo                          shift and go to state 4
+    imprimir                       shift and go to state 5
+    asignacion                     shift and go to state 6
+
+state 90
+
+    (37) ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA .
+
+    $end            reduce using rule 37 (ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA .)
+    TIPO            reduce using rule 37 (ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA .)
+    RESERV          reduce using rule 37 (ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA .)
+    VAR             reduce using rule 37 (ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA .)
+    LLLAVE          reduce using rule 37 (ciclo -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA .)
+
+
+state 91
+
+    (30) condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else .
+
+    $end            reduce using rule 30 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else .)
+    TIPO            reduce using rule 30 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else .)
+    RESERV          reduce using rule 30 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else .)
+    VAR             reduce using rule 30 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else .)
+    LLLAVE          reduce using rule 30 (condicional -> RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else .)
+
+
+state 92
+
+    (32) fin_con_else -> bloques . LLLAVE
+    (7) bloques -> bloques . bloque
+    (1) bloque -> . declaracion
+    (2) bloque -> . condicional
+    (3) bloque -> . ciclo
+    (4) bloque -> . imprimir
+    (5) bloque -> . asignacion
+    (8) declaracion -> . TIPO VAR EQUAL expresion POINTCOMA
+    (9) declaracion -> . TIPO VAR EQUAL CHAR POINTCOMA
+    (10) declaracion -> . TIPO VAR EQUAL STRING POINTCOMA
+    (11) declaracion -> . TIPO VAR EQUAL BOOL POINTCOMA
+    (12) declaracion -> . TIPO VAR EQUAL VAR POINTCOMA
+    (13) declaracion -> . TIPO VAR POINTCOMA
+    (29) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE
+    (30) condicional -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV RLLAVE fin_con_else
+    (37) ciclo -> . RESERV condiciones RLLAVE fin_con LLLAVE RESERV POINTCOMA
+    (44) imprimir -> . RESERV LPAREN STRING RPAREN POINTCOMA
+    (45) imprimir -> . RESERV LPAREN CHAR RPAREN POINTCOMA
+    (46) imprimir -> . RESERV LPAREN expresion RPAREN POINTCOMA
+    (14) asignacion -> . VAR EQUAL expresion POINTCOMA
+    (15) asignacion -> . VAR EQUAL CHAR POINTCOMA
+    (16) asignacion -> . VAR EQUAL STRING POINTCOMA
+    (17) asignacion -> . VAR EQUAL BOOL POINTCOMA
+    (18) asignacion -> . VAR EQUAL VAR POINTCOMA
+
+    LLLAVE          shift and go to state 93
+    TIPO            shift and go to state 7
+    RESERV          shift and go to state 9
+    VAR             shift and go to state 8
+
+    bloque                         shift and go to state 76
+    declaracion                    shift and go to state 2
+    condicional                    shift and go to state 3
+    ciclo                          shift and go to state 4
+    imprimir                       shift and go to state 5
+    asignacion                     shift and go to state 6
+
+state 93
+
+    (32) fin_con_else -> bloques LLLAVE .
+
+    $end            reduce using rule 32 (fin_con_else -> bloques LLLAVE .)
+    TIPO            reduce using rule 32 (fin_con_else -> bloques LLLAVE .)
+    RESERV          reduce using rule 32 (fin_con_else -> bloques LLLAVE .)
+    VAR             reduce using rule 32 (fin_con_else -> bloques LLLAVE .)
+    LLLAVE          reduce using rule 32 (fin_con_else -> bloques LLLAVE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for POINTCOMA in state 17 resolved as shift
+WARNING: shift/reduce conflict for POINTCOMA in state 21 resolved as shift
+WARNING: shift/reduce conflict for POINTCOMA in state 35 resolved as shift
+WARNING: shift/reduce conflict for POINTCOMA in state 39 resolved as shift
+WARNING: shift/reduce conflict for RESERV in state 75 resolved as shift
